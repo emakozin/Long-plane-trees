@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.11.6)  18 DEC 2020 10:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.11.6)  18 DEC 2020 11:15
 entering extended mode
 **./kratka_predstavitev.tex
 (kratka_predstavitev.tex
@@ -510,14 +510,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 29--32
  []
 
 
-Overfull \hbox (128.33817pt too wide) detected at line 38
+Overfull \hbox (94.66301pt too wide) detected at line 38
 \OML/cmm/m/it/12 Z\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 p; q\OT1/cmr/m/n/12 ) = []
  []
 
 [2] [3] (kratka_predstavitev.aux) ) 
 Here is how much of TeX's memory you used:
  13677 strings out of 480790
- 268148 string characters out of 2907055
+ 268280 string characters out of 2907055
  504980 words of memory out of 3000000
  29432 multiletter control sequences out of 15000+200000
  540961 words of font info for 46 fonts, out of 3000000 for 9000
