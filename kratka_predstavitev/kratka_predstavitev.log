@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.11.6)  18 DEC 2020 11:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.11.6)  18 DEC 2020 11:29
 entering extended mode
 **./kratka_predstavitev.tex
 (kratka_predstavitev.tex
@@ -510,9 +510,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 29--32
  []
 
 
-Overfull \hbox (94.66301pt too wide) detected at line 38
+Overfull \hbox (94.66301pt too wide) detected at line 39
 \OML/cmm/m/it/12 Z\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 p; q\OT1/cmr/m/n/12 ) = []
  []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.40 \end{equation*}
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
 
 [2] [3] (kratka_predstavitev.aux) ) 
 Here is how much of TeX's memory you used:
@@ -522,7 +533,7 @@ Here is how much of TeX's memory you used:
  29432 multiletter control sequences out of 15000+200000
  540961 words of font info for 46 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,16n,83p,610b,202s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 68i,16n,83p,610b,206s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\emako\AppData\Local\MiKTeX\fonts/
 pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\emako\AppData\Local\MiKTeX\
 fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\emako\AppData\Local\M
@@ -535,7 +546,7 @@ mmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/
 Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/
 MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts
 /type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on kratka_predstavitev.pdf (3 pages, 127811 bytes).
+Output written on kratka_predstavitev.pdf (3 pages, 127818 bytes).
 PDF statistics:
  201 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

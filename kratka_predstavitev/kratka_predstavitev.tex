@@ -29,13 +29,14 @@ Osredotočili se bomo na računanje najdaljše $dvozvezde$, tj. drevo, ki ima dv
 Uporabila bova naslednji algoritem za iskanje najdaljše dvozvezde s korenoma $a$ in $b$: \\
 Brez škode za splošno lahko predpostavimo, da $a$ in $b$ ležita na vodoravni črti, kjer je $a$ levo od $b$. Poleg tega lahko še predpostavimo, da vse druge točke ležijo nad to črto. Da lahko to rešimo preko dinamičnega programiranja, si poglejmo naslednji podproblem, indeksiran z parom različnih točk $p$ in $q$, kjer se povezavi $ap$ in $bq$ ne sekata. Vidimo, da povezave $ap$, $pq$, $qb$ in $ba$ tvorijo štirikotnik. Z $Q(p,q)$ označimo predel tega štirikotnika pod vzporednico stranice $ab$, ki gre skozi $y = min(y(p),y(q))$.
 Naj bo $Z(p,q)$ dolžina najdaljše dvozvezde s korenoma $a$ in $b$ na točkah znotraj $Q(p,q)$, brez upoštevanja dolžine $ab$. Če vsebuje vsaj štirikotnik $Q(p,q)$ kakšno točko množice $P$, poiščemo najvišje ležečo točko in jo označimo s $k_{p,q}$ ,ki jo povežemo bodisi z $a$ bodisi z $b$. Tako dobimo  trikotnika $L$ ali $R$ ($L$ dobimo, če $k_{p,q}$ povežemo z $a$, $R$ pa, če povežemo z $b$ )ter tako v nadaljevanju postavimo $k_{p,q}$ na mesto $p$-ja ali pa na mesto $q$-ja, odvisno od tega, kateri trikotnik opazujemo. Formalno dobimo naslednje: \\
+
 \begin{equation*}
 		$$\[ Z(p,q) = \left\{ \begin{array}{ll}
 		0 & \mbox{če v $Q(p,q)$ ni nobene točke iz $P$};\\
 		max \left\{ \begin{tabular}{ccc}
 			$Z(k_{p,q},q) + \|ak_{p,q} \| + \sum_{l \in L_{p,q}}\|al\| $ \\
 			$Z(p, k_{p,q}) + \|bk_{p,q}\| + \sum_{r \in R_{p,q}}\|br\| $
-		\end{tabular} \right\} & \mbox{sicer}\end{array} \right. \]$$
+		\end{tabular} \right\} & \mbox{sicer}\end{array} \right. \]$
 \end{equation*}
 Če zgornje uporabimo za vsak primeren par $(p, q)$ , najdemo najdaljšo dvozvezdo s korenoma $a$ in $b$.
 Uporabljeni algoritem se da izvesti v času $O(n^2)$.
