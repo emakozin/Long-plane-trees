@@ -1,3 +1,4 @@
 {
-    "jupyter.jupyterServerType": "local"
+    "jupyter.jupyterServerType": "local",
+    "python.pythonPath": "C:\\Users\\casua\\AppData\\Local\\Microsoft\\WindowsApps\\python3.9.exe"
 }

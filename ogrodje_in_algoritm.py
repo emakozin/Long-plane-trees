@@ -6,7 +6,7 @@ import matplotlib
 import jupyter
 from shapely.geometry import Point, Polygon
 import sys
-sys.setrecursionlimit(10000)
+sys.setrecursionlimit(1000)
 
 
 class Graf:
@@ -158,7 +158,7 @@ def pomožna (graf,a,b,p,q):
 
     
 def pomožna_B (graf,a,b):
-    print("a======================================================!")
+    print(a,"======================================================!")
     if graf.dim ==2:
         print("to je maks",0)
         return 0
@@ -212,7 +212,7 @@ def algo(graf):
                 
                     
 print(1)
-grafek=Graf(n=100)
+grafek=Graf(n=20)
 print(1)
 c=algo(grafek)
 print(1)
