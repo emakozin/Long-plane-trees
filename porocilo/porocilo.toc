@@ -1,0 +1,6 @@
+\babel@toc {slovene}{}
+\contentsline {section}{\numberline {1}Prestavitev problema}{3}%
+\contentsline {section}{\numberline {2}Algoritem}{3}%
+\contentsline {subsection}{\numberline {2.1}Opis}{3}%
+\contentsline {subsection}{\numberline {2.2}Koda}{4}%
+\contentsline {section}{\numberline {3}Sklep}{5}%
