@@ -1,4 +1,5 @@
 import random
+import time
 import math
 import numpy as np
 from numpy import linalg as LA
@@ -90,6 +91,20 @@ def alisesekata(graf,a,b,p,q):
     if (x >= min(at.x, pt.x) and x <= max(at.x, pt.x)) and (x >= min(bt.x, qt.x) and x <= max(bt.x, qt.x)) and (y >= min(at.y, pt.y) and y <= max(at.y, pt.y)) and (y >= min(bt.y, qt.y) and y <= max(bt.y, qt.y)):
             return True
     return False
+
+
+# za vsako vrstico v matriki izraluna povprečje vrne vektort povprečnih vrednosti matric
+def povprecje_vrstic(matrika):
+    normirana=[]
+    for i in matrika:
+        vsota = 0
+        for j in i:
+            vsota += j
+        normirana.append(vsota/len(i))
+    return normirana
+
+
+
 
 # evklidska razdalja
 def dist(tocka1,tocka2):
@@ -250,12 +265,39 @@ def algo1(graf):
             maksa=listdist(spisek,a,graf)
     return maksa
 
-grafek=Graf(n=10)
-grafek1=Graf(n=12)
-a=algo(grafek)
-b=algo1(grafek)
-print("reešeno",a,b)
-a=algo(grafek1)
-b=algo1(grafek1)
-print("reešeno",a,b)
+def algo_timer(i,z=5):
+    Časi2=[]
+    Časi1=[]
+    vrednosti2=[]
+    vrednosti1=[]
+    #za izbrano vrednost i  z-krat zalaufamo algoritem
+    for j in range(z):
+        t0 = time.time()
+        grafek=Graf(n=i)
+        a=algo(grafek)
+        t1 = time.time()
+        Časi2.append(t1-t0)
+        b=algo1(grafek)
+        t2 =time.time()
+        Časi1.append(t2-t1)
+        print("rešeno",a,b)
+        vrednosti2.append(a)
+        vrednosti1.append(b)
+    return Časi2,Časi1,vrednosti2,vrednosti1
+
+# da dobimo občutek o polinomalni stopnji algoritma v pšraksi bomo za izbrali velikoti grafov na nekem razponu ter imerili čas večkrat za vsako đtevilo točk da si bomo lahko pozneje te čase ogledali
+def makro_algo_timer(n0,n1,z=5):
+    sveti_gral= []
+    for i in range(n0,n1):
+        sveti_gral.append(algo_timer(i,z)[0])
+#dobimo matriko 
+    return sveti_gral
+
+
+
+gral= makro_algo_timer(7,12,5)
+print(gral)
+gral1= povprecje_vrstic(gral)
+#izračunamo povprečno vrednost za vsak n 
+print(gral1)
 
