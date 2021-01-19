@@ -14,20 +14,7 @@ class Graf:
         self.n = n
         self.tocke=tocke
         if not tocke:
-            i = n
-            while i != 0:
-                a = random.choice(cifre)
-                b = random.choice(cifre)
-                c = random.choice(cifre)
-                d = random.choice(cifre)
-                e = random.choice(cifre)
-                f = random.choice(cifre)
-                x = a*1/10 + b * 1/100 + c*1/1000
-                y = d*1/10 + e * 1/100 + f*1/1000
-                tocka = Point(x,y)
-                if tocka not in self.tocke:
-                    self.tocke.append(tocka)
-                    i = i - 1
+            self.tocke=generiraj(n)
         self.dim =len(self.tocke)
         dim=self.dim
         self.Z= np.zeros((dim,dim))
@@ -46,11 +33,23 @@ class Graf:
 
 
 
-#def generiraj(kvadrat,n=1):
- #   ret = []
- #   for i in range(n):
- #       ret.append(Graf(kvadrat))
- #   return ret
+def generiraj(n):
+    ret = []
+    i = n
+    while i != 0:
+            a = random.choice(cifre)
+            b = random.choice(cifre)
+            c = random.choice(cifre)
+            d = random.choice(cifre)
+            e = random.choice(cifre)
+            f = random.choice(cifre)
+            x = a*1/10 + b * 1/100 + c*1/1000
+            y = d*1/10 + e * 1/100 + f*1/1000
+            tocka = Point(x,y)
+            if tocka not in ret :
+                ret.append(tocka)
+                i = i - 1
+    return ret
     
 #funkcija ki preveri ali se daljici sekata
 def alisesekata(graf,a,b,p,q):
@@ -251,9 +250,12 @@ def algo1(graf):
             maksa=listdist(spisek,a,graf)
     return maksa
 
-
 grafek=Graf(n=10)
-c=algo(grafek)
-d=algo1(grafek)
+grafek1=Graf(n=12)
+a=algo(grafek)
+b=algo1(grafek)
+print("reešeno",a,b)
+a=algo(grafek1)
+b=algo1(grafek1)
+print("reešeno",a,b)
 
-print("rešeno",c,d)
