@@ -108,11 +108,13 @@ def listdist(spisek,a,graf):
 
 #razdalja med  točko in daljico
 def tocka_daljica(a,b,pqk):
-    return abs((pqk.x-b.x)*(b.y-a.y) - (b.x-a.x)*(pqk.y-b.y)) / np.sqrt(np.square(pqk.x-b.x) + np.square(pqk.y-b.y))
+    grr=abs((pqk.x-b.x)*(b.y-a.y) - (b.x-a.x)*(pqk.y-b.y)) / np.sqrt(np.square(pqk.x-b.x) + np.square(pqk.y-b.y))
+    return grr
 
 
 #osnova algoritma 
 def pomožna (graf,a,b,p,q,ne=0):
+    razdne=10
     #preverimo če smo iskano vrednost že poračunali
     if p==q:
         return error
@@ -124,6 +126,8 @@ def pomožna (graf,a,b,p,q,ne=0):
     razdalja_od_ab=0
     trenutna_tocka = 0
     #Izračunamo odaljenost p in q od daljice a-b da lahko poiščemo štirikotnik Q(p,q)
+    if ne:
+        razdne=tocka_daljica(graf.tocke[a],graf.tocke[ne],graf.tocke[b])
     razdp = tocka_daljica(graf.tocke[a],graf.tocke[p],graf.tocke[b])
     razdq = tocka_daljica(graf.tocke[a],graf.tocke[q],graf.tocke[b])
     if razdp==razdq:
@@ -145,19 +149,21 @@ def pomožna (graf,a,b,p,q,ne=0):
                 #vzamemo najbolj odaljeno
                 razd =  tocka_daljica(graf.tocke[a],graf.tocke[i],graf.tocke[b])
                 if razdalja_od_ab < razd:
-                    k= i
-                    razdalja_od_ab = razd
+                    if razd <  razdp:
+                         if razd< razdq:
+                            if razd<razdne:
+                                k= i
+                                razdalja_od_ab = razd
     #če smo našli kako točko v pravokotniku zažanemo krog rekurzije z najbolj odaljeno med njimi
     if k:
         #pogledamo če je v levem in desnem trikotniku kakšna točka, ki povežemo z ustrezno točko (a ali b)
         razdk = tocka_daljica(graf.tocke[a],graf.tocke[k],graf.tocke[b])
-        ratio=razdk/razdp 
         bočka= Point(graf.tocke[a].x*(1-ratio) + graf.tocke[p].x*ratio,graf.tocke[a].y*(1-ratio) + graf.tocke[p].y*ratio)             
         levit=Polygon(([graf.tocke[a],graf.tocke[k],bočka])) 
         ratio=razdk/razdq 
         nočka=Point(graf.tocke[b].x*(1-ratio) + graf.tocke[q].x*ratio, graf.tocke[b].y*(1-ratio) + graf.tocke[q].y*ratio)           
         desnit=Polygon(([graf.tocke[b],graf.tocke[k],nočka]))
-        levilist=[k]
+        levilist=[]
         desnilist=[k]
         for i in range(graf.dim):
             if i not in [a,b,p,q,k,ne]:
@@ -179,12 +185,14 @@ def pomožna (graf,a,b,p,q,ne=0):
             g2 = pomožna(graf,a,b,p,k,ne=q)
         #po algoritmu poiščemo maksimum
         g= max(g1+listdist(levilist,a,graf),g2 +listdist(desnilist,b,graf) )
+        g += listdist([p],a,graf)
+        g += listdist([q],b,graf)
         graf.Z[p][q]=g
         return g
     #če v pravokotniku ni točk se veriga konča
     else:
-        graf.Z[p][q]=-1
-        return 0
+        graf.Z[p][q]=listdist([q],b,graf) + listdist([p],a,graf)
+        return listdist([q],b,graf) + listdist([p],a,graf)
 
     
 def pomožna_B (graf,a,b):
@@ -198,10 +206,10 @@ def pomožna_B (graf,a,b):
             if j not in [a,b] and i not in [a,b] and i!=j:
                 if  (not alisesekata(graf,a,b,i,j)) :
                     if graf.Z[i][j] == 0 :
-                        pomožna(graf,a,b,i,j)
+                        graf.Z[i][j]=pomožna(graf,a,b,i,j)
                 if not alisesekata(graf,a,b,j,i):
                     if graf.Z[j][i] == 0:
-                        pomožna(graf,a,b,j,i)
+                        graf.Z[j][i]=pomožna(graf,a,b,j,i)
     maks=0
     for i in graf.Z:
         for j in i:
@@ -231,6 +239,21 @@ def algo(graf):
                 maksa= vred + dist(graf.tocke[a],graf.tocke[b])
     return maksa
 
+#še algoritem za eno zvezdo 
+def algo1(graf):
+    maksa=0
+    for a in range(graf.dim):
+        spisek=[]
+        for ou in range(graf.dim):
+            if a != ou:
+                spisek.append(ou)
+        if maksa < listdist(spisek,a,graf):
+            maksa=listdist(spisek,a,graf)
+    return maksa
+
+
 grafek=Graf(n=10)
 c=algo(grafek)
-print("najden graf",c)
+d=algo1(grafek)
+
+print("rešeno",c,d)
